@@ -21,17 +21,19 @@ The second part of this assignment is to get the generic unbounded stack package
 
 # Part III - Calculator Program
 
-The main part of this assignment is to implement a simple integer calculator with binary operators  addition, subtraction, multiplication, and division - no unary operators. Use the algorithm we will go over in class. There are two stacks: and operator stack and an operand stack. 
+The main part of this assignment is to implement a simple integer calculator with binary operators  addition, subtraction, multiplication, and division - no unary operators. Use the algorithm we will go over in class. There are two stacks: an operator stack and an operand stack. 
 
-> 
 The operator stack can be a stack of characters representing the pending operators (or an enumeration type if you prefer) and the operand stack is a stack of integers. 
 The program reads a string and goes through it left to right (in a single pass). When an operand (an integer) is encountered, it is pushed onto the operand stack.
-When an operator is encountered, all of the pending operators (on the operator stack) whose precedence is higher or equal to the current operator are applied (see the next paragraph) and then the current operator is pushed onto the operator stack. This continues until there are no more characters in the string. At this point, apply any remaining pending operators (on the operator stack) and the single value remaining on the operand stack is the value of the expression. 
+When an operator is encountered, all of the pending operators (on the operator stack) whose precedence is higher or equal to the current operator are applied (see the next paragraph) and then the current operator is pushed onto the operator stack. This continues until there are no more characters in the string. 
+
+At this point, apply any remaining pending operators (on the operator stack) and the single value remaining on the operand stack is the value of the expression. 
 If there is not exactly one operand on the operand stack, then the expression is not valid. 
 Applying an operator means to pop the operator off the top of the operator stack and pop two operands off the operand stack (the right one then the left one). The. perform the corresponding operation (add, subtract, multiple, or divide) on the operands, being careful of their order, and push the result on the operand stack. 
 If there are not two operands on the stack, then the expression is not valid. 
+
 For a full grade, you will extend the program to support floating point numbers and finally to support parenthesized sub-expressions.You can decide how to handle 'illegal' characters (those other than digits, +, -, *, or /) - either ignore them or raise an error. [Or some combination like ignore spaces and signal an error for others.]
-> 
+
 
 
 # Specifics 
