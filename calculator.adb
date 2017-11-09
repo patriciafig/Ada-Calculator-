@@ -1,18 +1,17 @@
-with Ada.Text_IO, Ada.Float_Text_IO, unbound_stack;
-        use Ada.Text_IO, Ada.Float_Text_IO;
-        procedure Ada_Calculator is
-            package Unbound_Operand_Stacks is new Unbound_Stack (Float);
-            package Unbound_Operator_Stacks is new Unbound_Stack (Character);
+with Ada.Text_IO, Ada.Integer_Text_IO, calculator-stacks.Stacks;
+        use Ada.Text_IO, Ada.Integer_Text_IO;
+        procedure Calculator is
+            package Operand_Stacks is new calculator-stacks.Stacks (Integer);
+            package Operator_Stacks is new calculator-stacks.Stacks (Character);
+            use Operand_Stacks, Operator_Stacks;
 
-            use Unbound_Operand_Stacks, Unbound_Operator_Stacks;
-            -- Buffer : String (1..80);
-            -- Last : Natural;
+            Operand_Stack :  Operand_Stacks.Stack_Type;
+            Operator_Stack : Operator_Stacks.Stack_Type;
+
             Operator : Character;
-            Operand : Float;
-            End_of_Line : Boolean;
-            Get_Operand : Boolean := False;
-            Operand_Stack: Unbound_Operand_Stacks.Stack;
-            Operator_Stack : Unbound_Operator_Stacks.Stack;
+            Operand  : Integer;
+            Line_End : Boolean;
+            Got_Operand : Boolean := False;
 
             procedure Apply is
                 Left, Right : Integer;
@@ -115,4 +114,4 @@ with Ada.Text_IO, Ada.Float_Text_IO, unbound_stack;
         exception
             when Syntax_Error =>
                 Put_Line (" -- program terminated.");
-         end Ada_Calculator;
+        end Calculator;
